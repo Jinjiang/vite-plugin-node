@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
-import Foo from '../src/react'
 
 const App: React.FC = () => {
   const [message, setMessage] = useState('Hello from React!')
 
   return (
     <div>
-      <Foo message={message} />
+      <h1>{message}</h1>
       <input
         type="text"
         value={message}

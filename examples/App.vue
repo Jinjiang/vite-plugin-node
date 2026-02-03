@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Foo :message="message" />
+    <h1>{{ message }}</h1>
     <input
       v-model="message"
       type="text"
@@ -10,7 +10,6 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import Foo from '../src/vue'
 
 const message = ref('Hello from Vue!')
 </script>
