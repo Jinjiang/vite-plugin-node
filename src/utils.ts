@@ -1,19 +1,22 @@
-import type {
-  // BooleanOrBuildTarget,
-  ModuleName,
-  ModuleNameWithoutNodePrefix,
-} from './index'
+// import type { BooleanOrBuildTarget, ModuleName, ModuleNameWithoutNodePrefix } from './index'
 
-// export const compareModuleNames = (moduleA: ModuleName, moduleB: ModuleName) => {
-//   return withoutNodeProtocol(moduleA) === withoutNodeProtocol(moduleB)
-// }
+import stdLibBrowser from 'node-stdlib-browser'
 
-// export const isEnabled = (value: BooleanOrBuildTarget, mode: 'build' | 'dev') => {
-//   if (!value) return false
-//   if (value === true) return true
+export type BuildTarget = 'build' | 'dev'
+export type BooleanOrBuildTarget = boolean | BuildTarget
+export type ModuleName = keyof typeof stdLibBrowser
+export type ModuleNameWithoutNodePrefix<T = ModuleName> = T extends `node:${infer P}` ? P : never
 
-//   return value === mode
-// }
+export const compareModuleNames = (moduleA: ModuleName, moduleB: ModuleName) => {
+  return withoutNodeProtocol(moduleA) === withoutNodeProtocol(moduleB)
+}
+
+export const isEnabled = (value: BooleanOrBuildTarget, mode: 'build' | 'dev') => {
+  if (!value) return false
+  if (value === true) return true
+
+  return value === mode
+}
 
 export const isNodeProtocolImport = (name: string) => {
   return name.startsWith('node:')
