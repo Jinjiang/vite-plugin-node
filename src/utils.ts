@@ -1,15 +1,19 @@
-import type { BooleanOrBuildTarget, ModuleName, ModuleNameWithoutNodePrefix } from './index'
+import type {
+  // BooleanOrBuildTarget,
+  ModuleName,
+  ModuleNameWithoutNodePrefix,
+} from './index'
 
-export const compareModuleNames = (moduleA: ModuleName, moduleB: ModuleName) => {
-  return withoutNodeProtocol(moduleA) === withoutNodeProtocol(moduleB)
-}
+// export const compareModuleNames = (moduleA: ModuleName, moduleB: ModuleName) => {
+//   return withoutNodeProtocol(moduleA) === withoutNodeProtocol(moduleB)
+// }
 
-export const isEnabled = (value: BooleanOrBuildTarget, mode: 'build' | 'dev') => {
-  if (!value) return false
-  if (value === true) return true
+// export const isEnabled = (value: BooleanOrBuildTarget, mode: 'build' | 'dev') => {
+//   if (!value) return false
+//   if (value === true) return true
 
-  return value === mode
-}
+//   return value === mode
+// }
 
 export const isNodeProtocolImport = (name: string) => {
   return name.startsWith('node:')
